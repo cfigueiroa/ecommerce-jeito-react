@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Lista from './components/Lista';
+import Carrinho from './components/Carrinho';
+import PRODUTOS from './PRODUTOS';
+import { useState } from "react";
+import styled from 'styled-components';
 
 function App() {
+  const lista = PRODUTOS;
+  const [carrinho, setCarrinho] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContainerApp>
+      <Lista lista={lista} carrinho={carrinho} setCarrinho={setCarrinho}/>
+      <Carrinho carrinho={carrinho} setCarrinho={setCarrinho}/>
+    </ContainerApp>
   );
 }
 
 export default App;
+
+export const ContainerApp = styled.div`
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  padding-right: 400px;
+`;
